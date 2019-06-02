@@ -11,7 +11,7 @@
     </bean>
     ```
     ```java
-    // singletonCoach == singletonCoach2
+    // singletonCoach1 == singletonCoach2
     final Coach singletonCoach1 = context.getBean("coach", Coach.class);
     final Coach singletonCoach2 = context.getBean("coach", Coach.class);
     ```
