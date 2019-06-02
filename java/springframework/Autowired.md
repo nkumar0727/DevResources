@@ -68,12 +68,24 @@ To resolve ambiguity, use @Qualifier to specify the exact BeanID when there are 
 
 Otherwise, you'll get *NoUniqueBeanDefinitionException*
 
-```java
-public class TennisCoach implements Coach {
-  @Autowired
-  @Qualifier("randomFortuneService")
-  private FortuneService fortuneService;
++ *@Qualifier* with field injection 
+   ```java
+   public class TennisCoach implements Coach {
 
-  ...
-}
-```
+      @Autowired
+      @Qualifier("randomFortuneService")
+      private FortuneService fortuneService;
+      ...
+   }
+   ```
++ *@Qualifer* with constructor/method/setter injection
+   ```java
+   public class TennisCoach implements Coach {
+
+      @Autowired
+      public TennisCoach(@Qualifier("randomFortuneService") final FortuneService fortuneService) {
+         ...
+      }
+      ...
+   }
+   ```

@@ -1,15 +1,30 @@
-# Bean Types
+# Bean Lifecycles
+
+You can use *@Scope()* to specify bean scoping.
 
 + Singleton
     + Default, single bean definition to single object instance per Spring IoC container
     + Can use init-method, destroy-method
-    ```xml
-    <bean id="coach" 
-          scope="singleton"
-          init-method="init"
-          destroy-method="cleanUp">
-    </bean>
-    ```
+        + XML
+            ```xml
+            <bean id="coach" 
+                scope="singleton"
+                init-method="setup"
+                destroy-method="tearDown">
+            </bean>
+            ```
+        + Annotation
+            ```java
+            @PostConstruct
+            public void setup() {
+
+            }
+
+            @PreDestroy
+            public void tearDown() {
+
+            }
+            ```
     ```java
     // singletonCoach1 == singletonCoach2
     final Coach singletonCoach1 = context.getBean("coach", Coach.class);
