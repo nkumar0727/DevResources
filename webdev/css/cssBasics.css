@@ -1,0 +1,20 @@
+li {
+  color: blue;
+}
+
+ul {
+  background: pink;
+  /*
+  border-color: purple;
+  border-width: 5px;
+  border-style: solid;
+  */
+
+  border: 5px solid purple;
+}
+
+body {
+  background: url(https://sain-et-naturel.com/wp-content/uploads/2017/06/Solitude-accompagn%C3%A9e.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
