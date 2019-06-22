@@ -1,0 +1,17 @@
+ul {
+  background: plum;
+  border: purple solid 5px
+}
+
+li {
+  list-style-type: none;
+}
+
+.completed {
+  text-decoration-line: line-through;
+}
+
+#special {
+  color: red;
+  background-color: tan
+}

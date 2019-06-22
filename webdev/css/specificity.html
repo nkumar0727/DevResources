@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CSS Selector Specificity</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+  </head>
+  <body>
+    <style type="text/css">
+      body {
+        color: red;
+      }
+      ul {
+        color: blue;
+      }
+
+      li {
+        color: black;
+      }
+
+      .highlight {
+        color: orange;
+      }
+
+      #special {
+        color: pink;
+      }
+    </style>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <ul>
+      <li id="special" class="highlight">One</li>
+      <li>Two</li>
+      <li>Three</li>
+      <li class="highlight">Four</li>
+    </ul>
+
+    <p>
+      Here we see that there is a priority here:
+      <ol>
+        <li>id selector</li>
+        <li>class selector</li>
+        <li>element selector</li>
+        <li>parent selector</li>
+        <li>grandparent selector</li>
+      </ol>
+    </p>
+
+    <p>
+      It turns out that a numeric value is assigned to each selector.
+      You can look at this  <a href="https://specificity.keegan.st/" target="_blank" rel="noopener noreferrer">Specificity Calculator</a> for calculating Specificity exactly.
+      You can read more about it on the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" target="_blank" rel="noopener noreferrer">Specificity Mozilla Page</a>.
+    </p>
+    <script src="" async defer></script>
+  </body>
+</html>

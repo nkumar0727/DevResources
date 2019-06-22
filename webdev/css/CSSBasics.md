@@ -106,3 +106,119 @@ body {
   backgraound-size: cover;
 }
 ```
+
+## Selectors
+
+You can select shit.
+
+### Elements
+
+```css
+li {
+
+}
+```
+
+### Classes
+
+```css
+.hello {
+
+}
+```
+
+### Star
+
+  + Can select everything
+  + Typically used with child selectors or to clear formatting
+
+```css
+* {
+
+}
+```
+
+### Descendants
+
++ The following example: *"select any \<a> inside a \<div> inside a \<li> and color it red"*
+
+```css
+li div a {
+  color: red
+}
+```
+
+### Adjacents
+
++ The following example: *"select any \<ul> which comes just after \<h4> and give it a solid red border"*
+
+```css
+h4 + ul {
+  border: 4px solid red
+}
+```
+
+### Attribute
+
++ The following example: *"select any \<a> who has href of google.com and give it blue background"*
+
+```css
+a[href="http://www.google.com"] {
+  background: blue
+}
+```
+
+### nth of Type
+
++ The following example: *"select the 3rd \<li> within the same parent tag and color it red"*
+
+```css
+li:nth-of-type(3) {
+  color: red
+}
+```
+
+## Selector Specificity
+
+Let's say you have the following selectors:
+
+```css
+body {
+  color: red;
+}
+
+ul {
+  color: blue;
+}
+
+li {
+  color: black;
+}
+
+.highlight {
+  color: orange;
+}
+
+#special {
+  color: pink;
+}
+```
+
+With the following html:
+
+```html
+<body>
+  <ul>
+    <li id="special" class="highlight">One</li>
+    <li>Two</li>
+    <li>Three</li>
+    <li class="highlight">Four</li>
+  </ul>
+</body>
+```
+
+What will each thing be colored? Click [here](https://rawcdn.githack.com/nkumar0727/DevResources/b11e8f8056cef39b7a589041cff569f20b390487/webdev/css/specificity.html) for the answer.
+
+It turns out
+
+
