@@ -219,6 +219,79 @@ With the following html:
 
 What will each thing be colored? Click [here](https://rawcdn.githack.com/nkumar0727/DevResources/b11e8f8056cef39b7a589041cff569f20b390487/webdev/css/specificity.html) for the answer.
 
-It turns out
+It turns out that precedence is in the following order:
+1) id
+2) class
+3) most deeply nested tag
+4) less deeply nested dag
 
+## Fonts
 
+```css
+body {
+  font-size: 10px
+}
+
+p {
+  font-family" Arial, Helvetica, sans-serif;
+  font-size: 4.0em;
+  font-weight: bold
+}
+
+h1 {
+  font-size: 5.0em
+}
+
+span {
+  font-size: 2.5em
+}
+```
+
+In the above case, we have the following html:
+
+```html
+<body>
+  <h1>
+  </h1>
+  <p>
+    <span>
+    </span>
+  </p>
+</body>
+```
+
+The header is 5 times the size of the body.
+The paragraph is 4 times the size of the body.
+The span is 2.5 * 4 = 10 times the size of the body.
+
+## Google Fonts
+
+[Google Fonts](www.google.com/fonts)
+
+You can use this to get better fonts than the ones innately provided.
+
+## Box Model
+
+Each element in a document is represented as a rectangular box.
+
+In CSS, each of these boxes is described using the **standard box model**:
++ Content
++ Padding
++ Border
++ Margin
+
+![Standard Box Model](./box_model.png)
+
+```css
+p {
+  width: 50%; # 50% of the parent tag (<body> in this case)
+
+  border: 2px solid blue;
+
+  padding-left: 40px;
+
+  margin: 100px; # everywhere
+  margin-top: 200px;
+  margin: 20px 40px 500px 100px; # top, right, bottom, left
+}
+```
