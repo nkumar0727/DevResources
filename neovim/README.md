@@ -41,6 +41,8 @@ Please look at the configuration in this repository for source-of-truth. Anythin
 
 ### Plugins
 
+With any plugin, you can check its install status/health using `:checkhealth` for all or `:checkhealth <plugin>` in `nvim` NORMAL mode.
+
 #### Plugin Manager
 
 ##### [lazy](https://github.com/folke/lazy.nvim)
@@ -64,30 +66,54 @@ Windows:
 
 ##### [which-key](https://github.com/folke/which-key.nvim)
 
-TODO
+Gives information on which key bindings are possible in a given buffer. Very useful when you're not sure which keys you have configured, or you want to change something.
 
 #### Searching
 
 ##### [telescope](https://github.com/nvim-telescope/telescope.nvim)
 
+Nice file searching capabilities.
+
 #### Appearence
 
 ##### [lualine](https://github.com/nvim-lualine/lualine.nvim)
 
-TODO
+Gives file metadata and nvim status at the bottom.
 
 ##### [tokyonight](https://github.com/folke/tokyonight.nvim)
 
-TODO
+Nice theme, easy on the eyes.
 
 #### Syntax Highlighting, Autocomplete, and LSPs
 
 ##### [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
-TODO. This one requires some Windows-specific setup. I had to troubleshoot the C compiler being used; include this.
+This provides filetype-specific syntax highlighting using a language parser.
+Some [Windows-specific instructions](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support):
+- Parser Installation
+  - Enable [Developer Mode](https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development). This is for creating symlinks.
+  - Don't prefer installs using `git`; use `curl` instead:
+  - ```
+    require 'nvim-treesitter.install'.prefer_git = false
+    ```
+- C Compiler
+  - ```
+    require 'nvim-treesitter.install'.compilers = { "clang", "gcc" }
+    ```
+  - Make sure your `PATH` variables are pointed to the correct compiler.
+    - I had it such that the `gcc` compiler that was used was a 32-bit compiler (I had `C:\MinGW\bin` which had only a 32-bit compiler). The error message I got is [described in this Github Issue](https://github.com/nvim-treesitter/nvim-treesitter/issues/1985):
+    - ```
+      E5108: Error executing lua Failed to load parser: uv_dlopen: C:\Users\Swagat\AppData\Local\nvim\plugged\nvim-treesitter\parser\cpp.so is not a valid Win32 application."
+      ```
+    - I was using [`msys2`](https://www.msys2.org/) for any software building toolchains, so I simply removed the environment variable for `C:\MinGw\bin` and used `C:\msys64\ucrt64\bin` for the GCC compiler. I had installed [mingw-w64-ucrt-x86_64-gcc](https://packages.msys2.org/package/mingw-w64-ucrt-x86_64-gcc?repo=ucrt64), hence why the path.
+
+To re-install the parsers, you need to re-tpe `:TSInstall lua` or `:TSInstall c` in `nvim`.
+Use `:checkhealth nvim-treesitter` to view status; a correct setup should have no ERRORs.
 
 #### Version Control
 
-TODO. Include fugitive after I see how it works.
+##### [vim-fugitive](https://github.com/tpope/vim-fugitive)
+
+Nice `git` integration within `nvim`.
 
 ### Useful Keybindings
