@@ -6,7 +6,7 @@
 
 #### [winget](https://winstall.app/apps/Neovim.Neovim)
 
-```
+```bash
 > winget install Neovim.Neovim
 ```
 
@@ -22,7 +22,7 @@ TODO
 
 Make sure your environment variables are pointing to the Neovim EXE path.
 
-```
+```bash
 C:\Program Files\Neovim\bin
 ```
 
@@ -74,15 +74,28 @@ Gives information on which key bindings are possible in a given buffer. Very use
 
 Nice file searching capabilities. Wiki recommneded I install [`ripgrep`](https://github.com/BurntSushi/ripgrep) as well for `grep_string` and `live_grep`.
 
-```
+```bash
 winget install BurntSushi.ripgrep.GNU
 ```
 
-Also recommended `fd` - a replacement to the `find` command:
+Also recommended [`fd` - a replacement to the `find` command](https://github.com/sharkdp/fd):
 
-```
+```bash
 winget install sharkdp.fd
 ```
+
+Finally install the [`telescope-fzf-naive`](https://github.com/nvim-telescope/telescope-fzf-native.nvim) extension to optimize sorting.
+- For Windows, if you are using msys2, you must [install GNU `make`](https://packages.msys2.org/package/mingw-w64-ucrt-x86_64-make?repo=ucrt64) to build the above extension
+- ```bash
+  pacman -S mingw-w64-ucrt-x86_64-make
+  ```
+- Please note that `make` will not resolve in PowerShell. This is because the EXE is called `mingw32-make.exe`. [See StackOverflow](https://stackoverflow.com/questions/42752721/mingw-64-ships-without-make-exe) as well as [SourceForge](https://sourceforge.net/p/mingw-w64/wiki2/Make/). So you must instead use the following in the `telescope-fzf-native.lua`:
+- ```lua
+  return {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      build = 'mingw32-make.exe'
+  }
+  ```
 
 #### Appearence
 
@@ -103,16 +116,16 @@ Some [Windows-specific instructions](https://github.com/nvim-treesitter/nvim-tre
 - Parser Installation
   - Enable [Developer Mode](https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development). This is for creating symlinks.
   - Don't prefer installs using `git`; use `curl` instead:
-  - ```
+  - ```vim
     require 'nvim-treesitter.install'.prefer_git = false
     ```
 - C Compiler
-  - ```
+  - ```vim
     require 'nvim-treesitter.install'.compilers = { "clang", "gcc" }
     ```
   - Make sure your `PATH` variables are pointed to the correct compiler.
     - I had it such that the `gcc` compiler that was used was a 32-bit compiler (I had `C:\MinGW\bin` which had only a 32-bit compiler). The error message I got is [described in this Github Issue](https://github.com/nvim-treesitter/nvim-treesitter/issues/1985):
-    - ```
+    - ```bash
       E5108: Error executing lua Failed to load parser: uv_dlopen: C:\Users\Swagat\AppData\Local\nvim\plugged\nvim-treesitter\parser\cpp.so is not a valid Win32 application."
       ```
     - I was using [`msys2`](https://www.msys2.org/) for any software building toolchains, so I simply removed the environment variable for `C:\MinGw\bin` and used `C:\msys64\ucrt64\bin` for the GCC compiler. I had installed [mingw-w64-ucrt-x86_64-gcc](https://packages.msys2.org/package/mingw-w64-ucrt-x86_64-gcc?repo=ucrt64), hence why the path.
