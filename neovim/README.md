@@ -72,7 +72,17 @@ Gives information on which key bindings are possible in a given buffer. Very use
 
 ##### [telescope](https://github.com/nvim-telescope/telescope.nvim)
 
-Nice file searching capabilities.
+Nice file searching capabilities. Wiki recommneded I install [`ripgrep`](https://github.com/BurntSushi/ripgrep) as well for `grep_string` and `live_grep`.
+
+```
+winget install BurntSushi.ripgrep.GNU
+```
+
+Also recommended `fd` - a replacement to the `find` command:
+
+```
+winget install sharkdp.fd
+```
 
 #### Appearence
 
