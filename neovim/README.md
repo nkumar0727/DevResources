@@ -116,4 +116,12 @@ Use `:checkhealth nvim-treesitter` to view status; a correct setup should have n
 
 Nice `git` integration within `nvim`.
 
+One important note here is where the window pops up when you do `:G log` when you have `nvim-tree` installed for example. [See Github Issue](https://github.com/tpope/vim-fugitive/issues/326):
+
+> This may be outside the scope of this project, and I don't know if there's an generic way to solve this, but...
+When using NERDTree, if the active window is NERDTree when you do a GStatus or GCommit, the result is a very weird split in the NERDTree pane. It would be nice if it acted as those you had typed the command in the active file buffer instead of the browser buffer.
+Is this possible?
+
+My simple, manual solution to this is just make sure that `nvim-tree` is not the current ACTIVE window when using `vim-fugitive`. IE. move focus to the code or text file you're editing on the right-hand side before using `git` commands.
+
 ### Useful Keybindings
