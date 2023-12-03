@@ -39,6 +39,10 @@ Create a [directory (if not already) for configuration](https://neovim.io/doc/us
 We will use a full Lua configuration (`init.lua`) and NO vimscript.
 Please look at the configuration in this repository for source-of-truth. Anything that cannot be determined there will have notes/references here.
 
+**TODO**: re-organize my the directory structure. Some references:
+- https://old.reddit.com/r/neovim/comments/kwvuje/dumb_question_but_how_do_you_structure_the_neovim/
+- https://neovim.io/doc/user/options.html#'runtimepath'
+
 ### Plugins
 
 With any plugin, you can check its install status/health using `:checkhealth` for all or `:checkhealth <plugin>` in `nvim` NORMAL mode.
@@ -62,11 +66,15 @@ Windows:
 - If you're using Windows Terminal, you can click ['Settings' and enable the font](https://learn.microsoft.com/en-us/windows/terminal/tutorials/custom-prompt-setup) for the profile.
 - The next time you start `nvim`, it should be using filetype icons.
 
-#### Keybindings
+#### Keybindings and Editing
 
 ##### [which-key](https://github.com/folke/which-key.nvim)
 
 Gives information on which key bindings are possible in a given buffer. Very useful when you're not sure which keys you have configured, or you want to change something.
+
+##### [undotree](https://github.com/mbbill/undotree)
+
+TODO
 
 #### Searching
 
@@ -97,6 +105,15 @@ Finally install the [`telescope-fzf-naive`](https://github.com/nvim-telescope/te
   }
   ```
 
+Important keybindings:
+
+```lua
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", builtin.find_files, {}) -- ff -> find files
+vim.keymap.set("n", "<leader>fg", builtin.git_files, {}) -- fg -> find git
+vim.keymap.set("n", "<leader>lg", builtin.live_grep, {}) -- lg -> live grep
+```
+
 #### Appearence
 
 ##### [lualine](https://github.com/nvim-lualine/lualine.nvim)
@@ -107,7 +124,7 @@ Gives file metadata and nvim status at the bottom.
 
 Nice theme, easy on the eyes.
 
-#### Syntax Highlighting, Autocomplete, and LSPs
+#### Syntax Highlighting, Autocomplete, and Language Server Protocols (LSPs)
 
 ##### [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
@@ -132,6 +149,10 @@ Some [Windows-specific instructions](https://github.com/nvim-treesitter/nvim-tre
 
 To re-install the parsers, you need to re-tpe `:TSInstall lua` or `:TSInstall c` in `nvim`.
 Use `:checkhealth nvim-treesitter` to view status; a correct setup should have no ERRORs.
+
+##### Language Server Protocols (LSPs)
+
+TODO: https://github.com/VonHeikemen/lsp-zero.nvim
 
 #### Version Control
 
